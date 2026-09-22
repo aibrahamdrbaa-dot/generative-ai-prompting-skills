@@ -10,6 +10,8 @@
 - skills/orchestration/prompt-compiler/SKILL.md
 - skills/orchestration/visual-bible/SKILL.md
 - skills/orchestration/video-storyboard/SKILL.md
+- skills/orchestration/memory-router/SKILL.md
+- skills/orchestration/creative-case-record/SKILL.md
 
 ## General
 - skills/general/prompt-architect/SKILL.md
@@ -48,7 +50,9 @@
 4. For references, assign authority before compiling the prompt.
 5. For recurring subjects, use the Visual Bible.
 6. For multi-shot video, use Video Storyboard.
-7. Always pass through Quality Gate before accepting the output.
-8. Use Iteration Controller after observed failure.
-9. Promote lessons to Supermemory only when they are durable and verified.
-10. Provider docs outrank community prompt collections.
+7. For repeated or experimental jobs, use Creative Case Record.
+8. Retrieve relevant Supermemory context before execution when prior knowledge may matter.
+9. Always pass through Quality Gate before accepting the output.
+10. Use Iteration Controller after observed failure.
+11. Promote lessons to Supermemory only when they are durable and verified.
+12. Provider docs outrank community prompt collections.
