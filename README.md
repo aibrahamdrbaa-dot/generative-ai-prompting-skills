@@ -7,7 +7,7 @@ A production-oriented, provider-aligned skill system for visual generation and e
 - Nano Banana Pro
 - GPT Image 2.5
 
-The repository also contains **dormant optional skill families** that are not part of normal execution.
+The repository also contains dormant optional skill families that are not part of normal execution.
 
 ## Architecture
 
@@ -27,22 +27,35 @@ Optional subsystems are activated only by their own trigger rules.
 
 ## Personality subsystem
 
-A separate on-demand family exists under:
+A separate on-demand personality and behavioral-analysis family exists under:
 skills/personality/
 
-It covers:
-- MBTI
-- DISC
-- Big Five
-- Enneagram
-- adult attachment
-- cross-framework evidence control
+Structure:
+- framework-selector
+- assessment-adapter
+- evidence
+- frameworks/mbti
+- frameworks/disc
+- frameworks/big-five
+- frameworks/enneagram
+- frameworks/attachment
 
-It is protected by:
-- skills/personality/personality-router
-- skills/orchestration/personality-gate
+The global protection layer is:
+skills/orchestration/personality-gate/
 
 Personality skills must never be loaded merely because Roy notices a behavioral pattern in conversation.
+
+## Personality activation
+
+DORMANT BY DEFAULT.
+
+Activate only for:
+- explicit personality testing
+- explicit personality analysis
+- interpretation of a supplied personality assessment
+- explicit communication/workflow adaptation based on a known result
+
+Do not infer or persist personality types from casual conversation.
 
 ## Memory rule
 
