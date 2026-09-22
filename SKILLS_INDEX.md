@@ -1,6 +1,6 @@
 # Skills Index
 
-## Visual entry point
+## Visual system
 - skills/generative-ai-prompting/SKILL.md
 
 ## Visual orchestration
@@ -30,19 +30,16 @@
 - skills/models/nano-banana-pro/SKILL.md
 - skills/models/gpt-image-2-5/SKILL.md
 
-## Personality — OPTIONAL / DORMANT
-Load only when explicitly required.
-
-### Personality routing
-- skills/personality/personality-router/SKILL.md
-
-### Personality frameworks
-- skills/personality/mbti-analysis/SKILL.md
-- skills/personality/disc-analysis/SKILL.md
-- skills/personality/big-five-analysis/SKILL.md
-- skills/personality/enneagram-analysis/SKILL.md
-- skills/personality/attachment-analysis/SKILL.md
-- skills/personality/personality-evidence/SKILL.md
+## Personality subsystem — OPTIONAL / DORMANT
+- skills/personality/README.md
+- skills/personality/framework-selector/SKILL.md
+- skills/personality/assessment-adapter/SKILL.md
+- skills/personality/evidence/SKILL.md
+- skills/personality/frameworks/mbti/SKILL.md
+- skills/personality/frameworks/disc/SKILL.md
+- skills/personality/frameworks/big-five/SKILL.md
+- skills/personality/frameworks/enneagram/SKILL.md
+- skills/personality/frameworks/attachment/SKILL.md
 
 ## Styles
 - anime
@@ -57,13 +54,14 @@ Load only when explicitly required.
 ## Specialty
 - real-estate-visuals
 
-## Combination rules
+## Global combination rules
 
-1. Pick one primary visual model adapter for visual tasks.
+1. One primary visual model adapter for visual tasks.
 2. Add optional visual skills only when their triggers fire.
-3. Personality skills are NOT visual skills and must never be loaded by visual tasks unless personality is explicitly part of the request.
-4. Personality Gate must fire before personality skills.
-5. Never infer a personality type from casual conversation.
-6. Use personality evidence labels when interpreting any personality framework.
-7. Do not persist inferred personality labels.
-8. Provider docs/instrument documentation and peer-reviewed evidence outrank community skills.
+3. Personality skills are a separate dormant subsystem.
+4. Personality Gate must activate before personality analysis.
+5. Framework Selector chooses the smallest appropriate framework.
+6. Assessment Adapter is used only for explicit testing.
+7. Personality Evidence controls interpretation and uncertainty.
+8. Never infer or persist a personality type from casual conversation.
+9. Provider/instrument documentation and peer-reviewed evidence outrank community skill collections.

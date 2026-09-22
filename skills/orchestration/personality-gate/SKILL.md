@@ -1,45 +1,51 @@
 ---
 name: personality-gate
-description: Prevents accidental personality typing by requiring an explicit trigger before personality-analysis skills enter Roy's active context.
+description: Hard activation gate that prevents accidental personality typing and prevents personality skills from entering unrelated Roy workflows.
 ---
 
 # Personality Gate
 
-This gate protects the default Roy workflow from unsolicited personality typing.
+This gate runs before any personality skill is loaded.
 
-## Before loading personality skills
+## Activation allowed only when
 
-Confirm at least one:
-- explicit request for a personality test
-- explicit request for personality analysis
-- supplied assessment result that must be interpreted
-- explicit request to adapt communication based on an existing personality result
+At least one is explicit:
+- the user asks for a personality test;
+- the user asks for personality/behavior analysis;
+- the user supplies a personality assessment result and asks for interpretation;
+- the user explicitly asks Roy to adapt communication/workflow based on an existing personality result.
 
-## Reject activation when
+## Activation denied when the only evidence is
 
-The only evidence is:
 - word choice
 - mood
 - a few past messages
-- disagreement/agreement with Roy
-- a user's occupation
-- a single behavioral anecdote
+- occupation
+- behavior in one anecdote
+- agreement/disagreement with Roy
+- Roy's intuition that a type fits
 
-## Persistence
+## Isolation
 
-Do not store an inferred personality type in Supermemory.
+Personality skills are not visual-generation skills.
 
-A durable personality fact may be stored only when:
-1. the user explicitly confirms it, AND
-2. the exact framework/instrument is known, AND
-3. the stored statement is narrowly scoped.
+A visual task must not activate them.
 
-Example:
-"User reported MBTI result = INTP from [instrument/version], self-reported on [date]."
+A study, coding, marketing, writing, or planning task must not activate them unless personality analysis is explicitly part of the request.
 
-Never store:
-"User is an INTP, therefore he thinks this way."
+## Exit condition
 
-## Off switch
+After the requested personality task is complete:
+- stop using the personality subsystem;
+- do not keep its framework assumptions active for unrelated tasks;
+- do not turn the result into hidden personalization.
 
-When the personality task ends, unload the personality subsystem from active reasoning and return to normal Roy routing.
+## Persistence rule
+
+Never store an inferred type.
+
+A stored personality fact must be:
+- explicitly user-confirmed;
+- tied to a known framework/instrument;
+- narrow in scope;
+- clearly marked as self-report where applicable.
