@@ -1,33 +1,51 @@
 ---
 name: gpt-image-2-5
-description: "Dedicated provider-aligned prompt skill for OpenAI GPT Image 2.5 Flare and Sunburst, covering generation, editing, text/layout, references, settings and iterative refinement."
+description: Provider-aligned adapter for OpenAI GPT Image 2.5 Flare and Sunburst image generation/editing workflows.
 ---
+
 # GPT Image 2.5
 
 ## Variants
-- `gpt-image-2.5-flare` — small, speed-oriented.
-- `gpt-image-2.5-sunburst` — base, quality-oriented.
 
-OpenAI recommends starting with Flare when speed is the priority and Sunburst for demanding quality requirements.
+- gpt-image-2.5-flare -> latency-oriented variant
+- gpt-image-2.5-sunburst -> quality/detail-oriented variant
+
+Choose the variant from the task constraint, not a global quality score.
+
+## Route here when
+
+- the task is an OpenAI GPT Image 2.5 image workflow
+- targeted editing matters
+- subject preservation matters
+- exact text/layout matters
+- the user's workflow already centers on GPT Image
 
 ## Prompt anatomy
-Image/artifact → subject → composition → style → lighting/materials → literal text → references → constraints.
+
+artifact/purpose -> subject -> composition -> style -> lighting/materials -> literal text -> references -> constraints
 
 ## Edits
-Use:
-"Change only [target]. Make it [desired result]. Keep [invariants] unchanged. Do not introduce [specific unwanted change]."
 
-OpenAI recommends refining one thing at a time and inspecting the result after each edit.
+Use:
+Change only [target]. Make it [desired result]. Keep [invariants] unchanged. Do not introduce [specific unwanted change].
+
+After each edit, inspect the result before applying another modification.
 
 ## Text/layout
-Quote exact copy. State placement, hierarchy and count. For diagrams and infographics, verify labels and factual relationships.
+
+Quote exact copy. State placement, hierarchy, count, alignment, and reading order.
+
+For diagrams/infographics, verify labels and relationships.
 
 ## Parameters
-Keep `model`, `quality`, `size` and `background` in the API/settings layer. Do not use prompt filler such as "4K" to control an API resolution setting.
+
+Keep model, quality, size, background and similar controls in the settings layer when the provider exposes them as parameters. Do not pretend prompt text changes an API parameter unless documented.
 
 ## Reference preservation
-Repeated edits can still change details; restate important constraints. If a region must remain pixel-identical, use a compositing step instead of relying on prompting alone.
+
+When a region must remain exact, prefer a workflow that explicitly preserves that region instead of relying on a vague keep-it-the-same instruction.
 
 ## Sources
-https://developers.openai.com/api/docs/guides/image-prompting
-https://openai.com/index/introducing-chatgpt-images-2-5/
+
+- https://platform.openai.com/docs/guides/image-generation
+- https://openai.com/index/introducing-chatgpt-images-2-5/

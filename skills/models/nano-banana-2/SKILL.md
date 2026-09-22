@@ -1,42 +1,69 @@
 ---
 name: nano-banana-2
-description: "Dedicated provider-aligned prompt skill for Nano Banana 2 / Gemini 3.1 Flash Image: generation, editing, multi-reference composition, text-heavy layouts and grounded visual tasks."
+description: Provider-aligned adapter for Nano Banana 2 / Gemini 3.1 Flash Image image generation and editing.
 ---
+
 # Nano Banana 2
 
-## Provider identity
-Official model ID: `gemini-3.1-flash-image`.
+Official model ID: gemini-3.1-flash-image.
 
-## Use it for
-General image generation/editing, multi-reference compositions, consistency workflows, text-rich visuals, fast iteration and search-grounded visual tasks.
+## Route here when
+
+- general image generation/editing
+- fast visual iteration
+- multiple references
+- subject consistency
+- text-rich visual work
+- high-resolution image work
+- grounded visual tasks where supported
+
+## Position in the system
+
+Treat Nano Banana 2 as the broad image workhorse: it balances speed and capability breadth. Use Nano Banana Pro when the brief is dominated by complex interacting constraints.
 
 ## Prompt anatomy
-Finished artifact + purpose → subject → composition → references and their roles → visual treatment → lighting/materials → text/layout → preserve/change → exclusions.
+
+finished visual/purpose -> subject -> composition -> reference roles -> visual treatment -> lighting/materials -> exact text -> preserve/change/exclude
+
+Start with the highest-signal visual constraint.
 
 ## References
-Assign each input a specific authority:
-- architecture;
-- product geometry;
-- person/character identity;
-- pose;
-- style;
-- environment;
-- layout.
 
-When roles conflict, specify which reference wins for each property.
+Give each input one authority:
+- identity
+- geometry
+- pose
+- composition
+- style
+- environment
+- layout
 
-## Text
-Give exact text in quotation marks and define placement/hierarchy. Avoid inventing factual labels, statistics or signage.
+If references conflict, resolve the conflict explicitly.
 
 ## Editing
-Use targeted changes and protect established geometry, subject identity and composition.
 
-## Resolution/aspect
-Nano Banana 2 supports 0.5K, 1K, 2K and 4K outputs and additional extreme aspect ratios. Put these choices in the request settings, not in decorative prompt prose.
+Use targeted verbs:
+change X; keep Y and Z unchanged.
+
+Do not ask for a broad transformation when only one region should change.
+
+## Text
+
+Quote exact text. State hierarchy and placement. Do not invent factual labels, numbers, signage, or branding.
+
+## Resolution and aspect
+
+Current Google documentation supports multiple output resolutions/aspect choices, including 4K in supported surfaces. Treat these as execution settings, not prompt adjectives.
 
 ## Grounding
-When current real-world content matters, use supported Search Grounding rather than fabricating facts.
+
+When current real-world facts matter and supported grounding is available, use it rather than fabricating factual visual details.
+
+## Iteration
+
+Prefer small, isolated refinements. Preserve successful properties from the previous result.
 
 ## Sources
-https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image
-https://ai.google.dev/gemini-api/docs/image-generation
+
+- https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image
+- https://ai.google.dev/gemini-api/docs/image-generation

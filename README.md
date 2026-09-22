@@ -1,89 +1,58 @@
 # Generative AI Prompting Skills
 
-A production-oriented, **provider-aligned** skill system for prompting and curating generative visual work across:
+A production-oriented, provider-aligned skill system for visual generation and editing across:
 
 - Gemini Omni 1.1 Flash
 - Nano Banana 2
 - Nano Banana Pro
-- ChatGPT Images 2.5
+- GPT Image 2.5
 
-> **Status:** These repository skills are original skills maintained for this project. They are not official Google/OpenAI Skills. Model behavior is anchored to the providers' current public documentation, with third-party repositories used as research references.
+These are original project skills, not official Google or OpenAI skill packages. Provider documentation is the source of truth for current model behavior.
 
 ## Architecture
 
-```
+User Brief
+-> Visual Brief
+-> Model Router
+-> Skill Stack Planner
+-> Reference Manager / Visual Bible / Specialty / Style
+-> Prompt Compiler
+-> Model Adapter
+-> Generation
+-> Quality Gate
+-> Iteration Controller
+-> Supermemory
+
+## Repository layout
+
 skills/
-├── generative-ai-prompting/     # cross-model router
-├── general/                     # reusable reasoning & editing skills
-├── models/                      # one dedicated skill per supported model
-├── styles/                      # reusable visual-style skills
-└── specialty/                   # domain skills, starting with real estate
-examples/                        # original copy-ready prompts
-research/                        # sources, audit and curation notes
-```
+├── generative-ai-prompting/   entry router
+├── orchestration/             brief, routing, stacking, compilation, continuity, video planning
+├── general/                   reusable task skills
+├── models/                    one adapter per supported model
+├── styles/                    reusable visual-language adapters
+└── specialty/                 domain-specific correctness
+examples/                      regression and copy-ready examples
+research/                      audits, matrices, sources, architecture
 
-## Dedicated model skills
+## Design rule
 
-| Model | ID | Skill |
-|---|---|---|
-| Gemini Omni 1.1 Flash | `gemini-omni-1.1-flash` | `skills/models/gemini-omni-1-1-flash/SKILL.md` |
-| Nano Banana 2 | `gemini-3.1-flash-image` | `skills/models/nano-banana-2/SKILL.md` |
-| Nano Banana Pro | `gemini-3-pro-image` | `skills/models/nano-banana-pro/SKILL.md` |
-| GPT Image 2.5 Flare | `gpt-image-2.5-flare` | `skills/models/gpt-image-2-5/SKILL.md` |
-| GPT Image 2.5 Sunburst | `gpt-image-2.5-sunburst` | same GPT Image 2.5 skill |
+The same user intent may need different prompt construction for different models. The system therefore keeps a common visual brief and compiles it through a provider-specific adapter.
 
-## General skills
+## Memory rule
 
-- prompt-architect
-- prompt-curator
-- image-to-prompt
-- visual-editing
-- typography-layout
+Supermemory stores durable workflow knowledge and user-confirmed preferences. It does not replace live provider documentation or project source-of-truth files.
 
-## Style skills
+## Quality rule
 
-- photorealism
-- cinematic
-- editorial
-- product-photography
-- architectural-visualization
-- illustration
-- anime
-- minimalist-graphic
+Tool success is not output success. Every meaningful generation gets a compliance and quality check before it becomes a reusable lesson.
 
-Style skills are **modular adapters**, not rigid presets. They tell the prompt writer which visual decisions define a style and which generic adjectives to avoid.
+## Current routing
 
-## Specialty skills
+- Omni 1.1 Flash -> video-native work
+- Nano Banana 2 -> general image work
+- Nano Banana Pro -> complex/grounded/brand-sensitive image work
+- GPT Image 2.5 Flare -> latency-oriented image work
+- GPT Image 2.5 Sunburst -> quality/detail-oriented image work
 
-- real-estate-visuals
-
-## Recommended stacking
-
-```
-User brief
-   ↓
-General Prompt Architect
-   ↓
-Model Skill
-   + Style Skill(s)
-   + Specialty Skill(s)
-   + Editing / Typography / Image-to-Prompt when relevant
-   ↓
-Prompt review
-   ↓
-Copy-ready prompt + settings
-```
-
-Examples:
-- Real-estate interior image → Prompt Architect + Nano Banana 2 + Real Estate + Architectural Visualization
-- Luxury product campaign → Prompt Architect + Nano Banana Pro + Product Photography + Editorial
-- Real-estate walkthrough video → Prompt Architect + Omni 1.1 Flash + Real Estate + Cinematic
-- Poster → Prompt Architect + target model + Typography & Layout + Minimalist Graphic
-
-## Curation policy
-
-Third-party prompt libraries are treated as research material. We retain source links, model fit, evidence and provenance notes; we do not copy large prompt dumps into this repository.
-
-## License
-
-MIT
+See SKILLS_INDEX.md and research/MODEL-CAPABILITY-MATRIX.md.
